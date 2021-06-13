@@ -17,6 +17,7 @@
 		- [1.8 Queue `std::queue`](#18-queue-stdqueue)
 		- [1.9 Priority Queue `std::priority_queue`](#19-priority-queue-stdpriority_queue)
 		- [1.10 Heap `std::priority_queue`](#110-heap-stdpriority_queue)
+		- [1.11 Array](#111-array)
 	- [2.0 Trees](#20-trees)
 		- [2.1 Binary Tree](#21-binary-tree)
 		- [2.2 Balanced Trees](#22-balanced-trees)
@@ -483,6 +484,38 @@ p.pop();
 **Max Heap Example (using a binary tree)**
 
 ![MaxHeap](General/MaxHeap.png)
+
+### 1.11 Array
+```
+/* Built-in Array (fixed size) */
+
+/* Initialization */
+//     the dimension must be a constant expression, 
+//     or be omitted when using list initialization
+int a1[5];                                      // if defined in a function, it will have undefined values
+int a2[] = {1, 2, 3};                           // dimension is 3
+int a3[5] = {1, 2, 3};                          // equivalent to a3[] = {1, 2, 3, 0, 0}
+
+/* Size */
+int size = sizeof(a) / sizeof(*a);
+
+/* Iteration */
+for (int i = 0; i < size; ++i) {                    // using subscript
+    // a[i] ... 
+}
+
+for (auto element : a) {                            // traverse the entire array
+    // element ...
+}
+
+                                                
+for (int *p = begin(a); p != end(a); ++p) {         // using pointer
+    // *p ...
+}
+
+/* Sort */
+sort(a, a + size);
+```
 -------------------------------------------------------
 ## 2.0 Trees
 ### 2.1 Binary Tree
