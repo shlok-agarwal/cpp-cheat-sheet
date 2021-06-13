@@ -466,8 +466,12 @@ int main()
     
     // count and search
     int count = M.count(10);
-    cout << "10 occurs " << count << " times";
+    cout << "10 occurs " << count << " times \n";
     // Can also be used to check if 5 exists. 
+
+    // max element, does not work with unordered_multiset
+    cout<<"Max element in set is " << *M.begin() << "\n";
+    cout<<"Min element in set is " << *M.rbegin() << "\n"; // rear begin
 
     return 0;
 }
