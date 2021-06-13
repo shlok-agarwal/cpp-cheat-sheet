@@ -47,5 +47,9 @@ int main()
     if(N.count("cat") > 0)
         cout<<N.find("cat")->second << "\n";
     
+    // find max or min; does not work for unordered
+    cout<<"Max key val pair is " << M.begin()->first << "\t" << M.begin()->second <<"\n";
+    cout<<"Min key val pair is " << M.rbegin()->first << "\t" << M.rbegin()->second <<"\n";
+    
     return 0;
 }
