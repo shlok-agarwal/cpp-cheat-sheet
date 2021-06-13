@@ -41,11 +41,14 @@
 ## 1.0 Data Structures
 ### 1.1 Overview
 
-![Legend](General/Legend.png)
+<!-- ![Legend](General/Legend.png)
 
 ![DataStructures](General/Data%20Structures.png "Data Structures")
 
-![ComplexityChart](General/Complexity%20Chart.png "Complexity Chart")
+![ComplexityChart](General/Complexity%20Chart.png "Complexity Chart") -->
+
+![image](https://user-images.githubusercontent.com/22652444/121819697-7fe98500-cc5c-11eb-80cf-507f0d06b4f2.png)
+![image](https://user-images.githubusercontent.com/22652444/121819706-8aa41a00-cc5c-11eb-958b-32b76e02d0f6.png)
 
 ![DataStructureSelection](General/Data%20Structures%20Selection.png "Data Structures Selection")
 -------------------------------------------------------
