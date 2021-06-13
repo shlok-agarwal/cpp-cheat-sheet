@@ -489,6 +489,10 @@ p.pop();
 ```
 /* Built-in Array (fixed size) */
 
+#include <algorithm>    // std::sort
+// The following library needs to be included to use std::greater<datatype>()
+#include <functional>
+
 /* Initialization */
 //     the dimension must be a constant expression, 
 //     or be omitted when using list initialization
@@ -514,7 +518,20 @@ for (int *p = begin(a); p != end(a); ++p) {         // using pointer
 }
 
 /* Sort */
-sort(a, a + size);
+
+// Syntax: (sort(a, a + size);
+
+
+bool comparator(string &a, string &b){
+  return a > b;
+}
+string coffee[] = {"latte", "cappuccino", "americano", "espresso"}; 
+int size = 4;
+std::sort(coffee, coffee + size, less<>()); // Ascending (Default), Include <functional> for greater/less
+std::sort(coffee, coffee + size, greater<>()); // Descending
+std::sort(coffee, coffee + size, comparator); // Custom
+
+
 ```
 -------------------------------------------------------
 ## 2.0 Trees
