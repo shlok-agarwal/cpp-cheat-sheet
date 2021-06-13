@@ -18,7 +18,6 @@
 		- [1.9 Priority Queue `std::priority_queue`](#19-priority-queue-stdpriority_queue)
 		- [1.10 Heap `std::priority_queue`](#110-heap-stdpriority_queue)
 		- [1.11 Array](#111-array)
-		- [1.12 Multiset](#112-multiset)
 	- [2.0 Trees](#20-trees)
 		- [2.1 Binary Tree](#21-binary-tree)
 		- [2.2 Balanced Trees](#22-balanced-trees)
@@ -324,6 +323,60 @@ bool exists = (m.find("key") != m.end());
 // Count the number of elements with a certain key
 unsigned int count = m.count("key");
 ```
+
+Another example showing ordered, unordered and multimaps
+```c++
+#include <map>
+#include <unordered_map>
+#include <iostream>
+
+using namespace std;
+
+// to search in map
+// auto itr = table.find(make_pair(startStation, endStation));
+// if(itr != table.end())
+//     return itr->second;
+// else return null;
+
+int main()
+{
+    // ORDERED O(log n)
+    // map <string, int, less<>> M;
+    multimap <string, int, less<>> M; // add greater to change sort order; default is less
+    // M["dog"] = 3; // this is not supported in multimap, so better to avoid
+    M.insert(make_pair("cat", 1));
+    M.insert(make_pair("dog", 2));
+    M.insert(make_pair("dog", 3));
+    M.insert(make_pair("elephant", 4));
+    
+    cout <<"ORDERED \n";
+    for(auto &elm: M)
+        cout<<elm.first <<"\t" << elm.second <<"\n";
+    cout <<"\n";
+    
+    // UNORDERED O(1)
+    // unordered_map<string, int> N; 
+    unordered_multimap<string, int> N; 
+    // in map, this will overwrite the previous key. To not overwrite, check if already exists
+    // N["dog"] = 3; // this is not supported in multimap, so better to avoid
+    N.insert(make_pair("cat", 1));
+    N.insert(make_pair("dog", 2));
+    N.insert(make_pair("dog", 3));
+    N.insert(make_pair("elephant", 4));
+    
+    cout <<"UNORDERED \n";
+    for(auto &elm: N)
+        cout<<elm.first <<"\t" << elm.second <<"\n";
+
+    // SEARCH is the same for ordered and unordered.
+    if(N.find("cat") != N.end())
+        cout<<N.find("cat")->second; // better to access elements this way
+    if(N.count("cat") > 0)
+        cout<<N.find("cat")->second << "\n";
+    
+    return 0;
+}
+```
 -------------------------------------------------------
 ### 1.6 Set `std::set`
 **Use for**
@@ -379,6 +432,50 @@ bool exists = (s.find(20) != s.end());
 
 // Count the number of elements with a certain value
 unsigned int count = s.count(20);
+```
+
+Another example showing multisets
+
+```c++
+#include <iostream>
+#include <functional>
+#include <string>
+#include <set>
+#include <unordered_set>
+
+using namespace std;
+
+// Use multiset when you want ordered dataset with duplicates
+// Insertion, removal and search happens to logarithmic complexity
+
+int main()
+{
+    // unordered_multiset<int> M = {2,3,4,5,2,1,5};
+    multiset<int, greater<>> M = {2,3,4,5,2,1,5};
+    for(auto &elm : M)
+        cout<< elm << "\t";
+    cout << "\n";
+
+    // search and print using the pointer
+    auto itr = M.find(3);
+    for (auto i = itr; i != M.end(); i++)
+    {
+        cout << *i <<"\t";
+    }
+    cout << "\n";
+    
+    // count and search
+    int count = M.count(10);
+    cout << "10 occurs " << count << " times \n";
+    // Can also be used to check if 5 exists. 
+
+    // max element, does not work with unordered_multiset
+    cout<<"Max element in set is " << *M.begin() << "\n";
+    cout<<"Min element in set is " << *M.rbegin() << "\n"; // rear begin
+
+    return 0;
+}
+
 ```
 -------------------------------------------------------
 ### 1.7 Stack `std::stack`
@@ -490,7 +587,7 @@ p.pop();
 ![MaxHeap](General/MaxHeap.png)
 
 ### 1.11 Array
-```
+```c++
 /* Built-in Array (fixed size) */
 
 #include <algorithm>    // std::sort
@@ -536,44 +633,6 @@ std::sort(coffee, coffee + size, greater<>()); // Descending
 std::sort(coffee, coffee + size, comparator); // Custom
 
 
-```
-
-### 1.12 Multiset
-* Use multiset when you want ordered dataset with duplicates
-* Insertion, removal and search happens to logarithmic complexity
-
-```
-#include <iostream>
-#include <functional>
-#include <string>
-#include <set>
-#include <unordered_set>
-
-using namespace std;
-
-int main()
-{
-    // unordered_multiset<int> M = {2,3,4,5,2,1,5}; // Same operations
-    multiset<int, greater<>> M = {2,3,4,5,2,1,5};
-    for(auto &elm : M)
-        cout<< elm << "\t";
-    cout << "\n";
-
-    // search and print using the pointer
-    auto itr = M.find(3);
-    for (auto i = itr; i != M.end(); i++)
-    {
-        cout << *i <<"\t";
-    }
-    cout << "\n";
-    
-    // count and search
-    int count = M.count(10);
-    cout << "10 occurs " << count << " times";
-    // Can also be used to check if 5 exists. 
-
-    return 0;
-}
 ```
 -------------------------------------------------------
 ## 2.0 Trees
