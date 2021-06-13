@@ -18,7 +18,6 @@
 		- [1.9 Priority Queue `std::priority_queue`](#19-priority-queue-stdpriority_queue)
 		- [1.10 Heap `std::priority_queue`](#110-heap-stdpriority_queue)
 		- [1.11 Array](#111-array)
-		- [1.12 Multiset](#112-multiset)
 	- [2.0 Trees](#20-trees)
 		- [2.1 Binary Tree](#21-binary-tree)
 		- [2.2 Balanced Trees](#22-balanced-trees)
@@ -326,7 +325,7 @@ unsigned int count = m.count("key");
 ```
 
 Another example showing ordered, unordered and multimaps
-```
+```c++
 #include <map>
 #include <unordered_map>
 #include <iostream>
@@ -437,7 +436,7 @@ unsigned int count = s.count(20);
 
 Another example showing multisets
 
-```
+```c++
 #include <iostream>
 #include <functional>
 #include <string>
@@ -584,7 +583,7 @@ p.pop();
 ![MaxHeap](General/MaxHeap.png)
 
 ### 1.11 Array
-```
+```c++
 /* Built-in Array (fixed size) */
 
 #include <algorithm>    // std::sort
@@ -630,44 +629,6 @@ std::sort(coffee, coffee + size, greater<>()); // Descending
 std::sort(coffee, coffee + size, comparator); // Custom
 
 
-```
-
-### 1.12 Multiset
-* Use multiset when you want ordered dataset with duplicates
-* Insertion, removal and search happens to logarithmic complexity
-
-```
-#include <iostream>
-#include <functional>
-#include <string>
-#include <set>
-#include <unordered_set>
-
-using namespace std;
-
-int main()
-{
-    // unordered_multiset<int> M = {2,3,4,5,2,1,5}; // Same operations
-    multiset<int, greater<>> M = {2,3,4,5,2,1,5};
-    for(auto &elm : M)
-        cout<< elm << "\t";
-    cout << "\n";
-
-    // search and print using the pointer
-    auto itr = M.find(3);
-    for (auto i = itr; i != M.end(); i++)
-    {
-        cout << *i <<"\t";
-    }
-    cout << "\n";
-    
-    // count and search
-    int count = M.count(10);
-    cout << "10 occurs " << count << " times";
-    // Can also be used to check if 5 exists. 
-
-    return 0;
-}
 ```
 -------------------------------------------------------
 ## 2.0 Trees
